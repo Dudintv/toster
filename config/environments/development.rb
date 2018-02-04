@@ -14,6 +14,7 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   config.action_controller.perform_caching = true
+  config.cache_store = :redis_store, 'redis://:my_qwerty_password@localhost:6379/0/cache', { expires_in: 90.minutes }
   # if Rails.root.join('tmp/caching-dev.txt').exist?
   #   config.action_controller.perform_caching = true
 

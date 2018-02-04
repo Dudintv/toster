@@ -12,7 +12,7 @@ describe 'Question API' do
 
     context 'authorized' do
       let!(:questions) { create_list :question, 2 }
-      let(:question) { questions.first }
+      let(:question) { questions.last }
       let!(:answer) { create :answer, question: question }
 
       before { make_request access_token: access_token.token }
@@ -25,7 +25,7 @@ describe 'Question API' do
 
       %w(id title body created_at updated_at).each do |attr|
         it "question object contains #{attr}" do
-          expect(response.body).to be_json_eql(question.send(attr.to_sym).to_json).at_path("0/#{attr}")
+          expect(response.body).to be_json_eql(question.send(attr.to_sym).to_json).at_path("1/#{attr}")
         end
       end
     end
